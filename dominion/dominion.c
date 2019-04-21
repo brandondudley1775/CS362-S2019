@@ -673,6 +673,7 @@ int adventurerRefactor(struct gameState *state, int currentPlayer, int z){
 	  temphand[z]=cardDrawn;
 	  state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
 	  z++;
+	  return 0;
 	}
       }
 	while(z-1>=0){
@@ -687,12 +688,13 @@ int seaHagRefactor(struct gameState *state, int currentPlayer){
 	int i;
 	for (i = 0; i < state->numPlayers; i++){
 	//if (i != currentPlayer){
-	  state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];			    state->deckCount[i]--;
+	  state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];
+	  state->deckCount[i]--;
 	  state->discardCount[i]++;
 	  state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
 	//}
       }
-	return 0;
+	return 1;
 }
 
 // refactored treasure map code called from cardEffect
@@ -726,7 +728,7 @@ int treasureMapRefactor(struct gameState *state, int currentPlayer, int handPos)
 	}
 			
       //no second treasure_map found in hand
-      return -1;
+      return 1;
 }
 
 // refactored ambassador code called from cardEffect
