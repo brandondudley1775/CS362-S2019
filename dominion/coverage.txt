@@ -1,17 +1,2 @@
-cardtest4
-Reading data file coverage.info
-Found 6 entries.
-Found common filename prefix "/mnt/c/Users/brandon/Documents/GitHub/dudleyb_hw"
-Writing .css and .png files.
-Generating output.
-Processing file dominion/rngs.c
-Processing file dominion/cardtest2.c
-Processing file dominion/dominion.c
-Processing file dominion/cardtest4.c
-Processing file dominion/cardtest4_sample.c
-Processing file dominion/playdom.c
-Writing directory view page.
-Overall coverage rate:
-  lines......: 49.4% (431 of 873 lines)
-  functions..: 54.1% (20 of 37 functions)
+cardtest3
 -----------------------------------------------------

@@ -53,6 +53,6 @@ unittest3: unittest3.c dominion.o rngs.o
 	gcc -o unittest3 -g unittest3.c dominion.o rngs.o $(CFLAGS)
 unittest4: unittest4.c dominion.o rngs.o
 	gcc -o unittest4 -g unittest4.c dominion.o rngs.o $(CFLAGS)
-unittestresults: cardtest1 cardtest2 cardtest3 cardtest4
+unittestresults: cardtest1 cardtest2 cardtest3 cardtest4 unittest1 unittest2 unittest3 unittest4
 	lcov -c -d . -o coverage.info >> unittestresult.out
 	genhtml coverage.info --output-directory out >> unittestresult.out
