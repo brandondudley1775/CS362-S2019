@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-05-05 18:20:07</td>
+            <td class="headerValue">2019-05-05 21:07:08</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -110,27 +110,27 @@
 <span class="lineNum">      48 </span>            : static int  initialized   = 0;          /* test for stream initialization */
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span><span class="lineCov">        199 :    double Random(void)</span>
+<span class="lineNum">      51 </span><span class="lineCov">       1378 :    double Random(void)</span>
 <span class="lineNum">      52 </span>            : /* ----------------------------------------------------------------
 <span class="lineNum">      53 </span>            :  * Random returns a pseudo-random real number uniformly distributed 
 <span class="lineNum">      54 </span>            :  * between 0.0 and 1.0. 
 <span class="lineNum">      55 </span>            :  * ----------------------------------------------------------------
 <span class="lineNum">      56 </span>            :  */
 <span class="lineNum">      57 </span>            : {
-<span class="lineNum">      58 </span><span class="lineCov">        199 :   const long Q = MODULUS / MULTIPLIER;</span>
-<span class="lineNum">      59 </span><span class="lineCov">        199 :   const long R = MODULUS % MULTIPLIER;</span>
+<span class="lineNum">      58 </span><span class="lineCov">       1378 :   const long Q = MODULUS / MULTIPLIER;</span>
+<span class="lineNum">      59 </span><span class="lineCov">       1378 :   const long R = MODULUS % MULTIPLIER;</span>
 <span class="lineNum">      60 </span>            :         long t;
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineCov">        199 :   t = MULTIPLIER * (seed[stream] % Q) - R * (seed[stream] / Q);</span>
-<span class="lineNum">      63 </span><span class="lineCov">        199 :   if (t &gt; 0) </span>
-<span class="lineNum">      64 </span><span class="lineCov">        188 :     seed[stream] = t;</span>
+<span class="lineNum">      62 </span><span class="lineCov">       1378 :   t = MULTIPLIER * (seed[stream] % Q) - R * (seed[stream] / Q);</span>
+<span class="lineNum">      63 </span><span class="lineCov">       1378 :   if (t &gt; 0) </span>
+<span class="lineNum">      64 </span><span class="lineCov">       1263 :     seed[stream] = t;</span>
 <span class="lineNum">      65 </span>            :   else 
-<span class="lineNum">      66 </span><span class="lineCov">         11 :     seed[stream] = t + MODULUS;</span>
-<span class="lineNum">      67 </span><span class="lineCov">        199 :   return ((double) seed[stream] / MODULUS);</span>
+<span class="lineNum">      66 </span><span class="lineCov">        115 :     seed[stream] = t + MODULUS;</span>
+<span class="lineNum">      67 </span><span class="lineCov">       1378 :   return ((double) seed[stream] / MODULUS);</span>
 <span class="lineNum">      68 </span>            : }
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineCov">          1 :    void PlantSeeds(long x)</span>
+<span class="lineNum">      71 </span><span class="lineCov">         51 :    void PlantSeeds(long x)</span>
 <span class="lineNum">      72 </span>            : /* ---------------------------------------------------------------------
 <span class="lineNum">      73 </span>            :  * Use this function to set the state of all the random number generator 
 <span class="lineNum">      74 </span>            :  * streams by &quot;planting&quot; a sequence of states (seeds), one per stream, 
@@ -140,27 +140,27 @@
 <span class="lineNum">      78 </span>            :  * ---------------------------------------------------------------------
 <span class="lineNum">      79 </span>            :  */
 <span class="lineNum">      80 </span>            : {
-<span class="lineNum">      81 </span><span class="lineCov">          1 :   const long Q = MODULUS / A256;</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 :   const long R = MODULUS % A256;</span>
+<span class="lineNum">      81 </span><span class="lineCov">         51 :   const long Q = MODULUS / A256;</span>
+<span class="lineNum">      82 </span><span class="lineCov">         51 :   const long R = MODULUS % A256;</span>
 <span class="lineNum">      83 </span>            :         int  j;
 <span class="lineNum">      84 </span>            :         int  s;
 <span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span><span class="lineCov">          1 :   initialized = 1;</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 :   s = stream;                            /* remember the current stream */</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 :   SelectStream(0);                       /* change to stream 0          */</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 :   PutSeed(x);                            /* set seed[0]                 */</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 :   stream = s;                            /* reset the current stream    */</span>
-<span class="lineNum">      91 </span><span class="lineCov">        256 :   for (j = 1; j &lt; STREAMS; j++) {</span>
-<span class="lineNum">      92 </span><span class="lineCov">        255 :     x = A256 * (seed[j - 1] % Q) - R * (seed[j - 1] / Q);</span>
-<span class="lineNum">      93 </span><span class="lineCov">        255 :     if (x &gt; 0)</span>
-<span class="lineNum">      94 </span><span class="lineCov">        246 :       seed[j] = x;</span>
+<span class="lineNum">      86 </span><span class="lineCov">         51 :   initialized = 1;</span>
+<span class="lineNum">      87 </span><span class="lineCov">         51 :   s = stream;                            /* remember the current stream */</span>
+<span class="lineNum">      88 </span><span class="lineCov">         51 :   SelectStream(0);                       /* change to stream 0          */</span>
+<span class="lineNum">      89 </span><span class="lineCov">         51 :   PutSeed(x);                            /* set seed[0]                 */</span>
+<span class="lineNum">      90 </span><span class="lineCov">         51 :   stream = s;                            /* reset the current stream    */</span>
+<span class="lineNum">      91 </span><span class="lineCov">      13056 :   for (j = 1; j &lt; STREAMS; j++) {</span>
+<span class="lineNum">      92 </span><span class="lineCov">      13005 :     x = A256 * (seed[j - 1] % Q) - R * (seed[j - 1] / Q);</span>
+<span class="lineNum">      93 </span><span class="lineCov">      13005 :     if (x &gt; 0)</span>
+<span class="lineNum">      94 </span><span class="lineCov">      12546 :       seed[j] = x;</span>
 <span class="lineNum">      95 </span>            :     else
-<span class="lineNum">      96 </span><span class="lineCov">          9 :       seed[j] = x + MODULUS;</span>
+<span class="lineNum">      96 </span><span class="lineCov">        459 :       seed[j] = x + MODULUS;</span>
 <span class="lineNum">      97 </span>            :    }
-<span class="lineNum">      98 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      98 </span><span class="lineCov">         51 : }</span>
 <a name="99"><span class="lineNum">      99 </span>            : </a>
 <span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span><span class="lineCov">          2 :    void PutSeed(long x)</span>
+<span class="lineNum">     101 </span><span class="lineCov">        102 :    void PutSeed(long x)</span>
 <span class="lineNum">     102 </span>            : /* ---------------------------------------------------------------
 <span class="lineNum">     103 </span>            :  * Use this function to set the state of the current random number 
 <span class="lineNum">     104 </span>            :  * generator stream according to the following conventions:
@@ -170,13 +170,13 @@
 <span class="lineNum">     108 </span>            :  * ---------------------------------------------------------------
 <span class="lineNum">     109 </span>            :  */
 <span class="lineNum">     110 </span>            : {
-<span class="lineNum">     111 </span><span class="lineCov">          2 :   char ok = 0;</span>
+<span class="lineNum">     111 </span><span class="lineCov">        102 :   char ok = 0;</span>
 <span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span><span class="lineCov">          2 :   if (x &gt; 0)</span>
-<span class="lineNum">     114 </span><span class="lineCov">          2 :     x = x % MODULUS;                       /* correct if x is too large  */</span>
-<span class="lineNum">     115 </span><span class="lineCov">          2 :   if (x &lt; 0)                                 </span>
+<span class="lineNum">     113 </span><span class="lineCov">        102 :   if (x &gt; 0)</span>
+<span class="lineNum">     114 </span><span class="lineCov">        102 :     x = x % MODULUS;                       /* correct if x is too large  */</span>
+<span class="lineNum">     115 </span><span class="lineCov">        102 :   if (x &lt; 0)                                 </span>
 <span class="lineNum">     116 </span><span class="lineNoCov">          0 :     x = ((unsigned long) time((time_t *) NULL)) % MODULUS;              </span>
-<span class="lineNum">     117 </span><span class="lineCov">          2 :   if (x == 0)                                </span>
+<span class="lineNum">     117 </span><span class="lineCov">        102 :   if (x == 0)                                </span>
 <span class="lineNum">     118 </span><span class="lineNoCov">          0 :     while (!ok) {</span>
 <span class="lineNum">     119 </span><span class="lineNoCov">          0 :       printf(&quot;\nEnter a positive integer seed (9 digits or less) &gt;&gt; &quot;);</span>
 <span class="lineNum">     120 </span><span class="lineNoCov">          0 :       scanf(&quot;%ld&quot;, &amp;x);</span>
@@ -184,8 +184,8 @@
 <span class="lineNum">     122 </span><span class="lineNoCov">          0 :       if (!ok)</span>
 <span class="lineNum">     123 </span><span class="lineNoCov">          0 :         printf(&quot;\nInput out of range ... try again\n&quot;);</span>
 <span class="lineNum">     124 </span>            :     }
-<span class="lineNum">     125 </span><span class="lineCov">          2 :   seed[stream] = x;</span>
-<span class="lineNum">     126 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     125 </span><span class="lineCov">        102 :   seed[stream] = x;</span>
+<span class="lineNum">     126 </span><span class="lineCov">        102 : }</span>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
 <span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span><span class="lineNoCov">          0 :    void GetSeed(long *x)</span>
@@ -199,17 +199,17 @@
 <span class="lineNum">     137 </span><span class="lineNoCov">          0 : }</span>
 <a name="138"><span class="lineNum">     138 </span>            : </a>
 <span class="lineNum">     139 </span>            : 
-<span class="lineNum">     140 </span><span class="lineCov">          2 :    void SelectStream(int index)</span>
+<span class="lineNum">     140 </span><span class="lineCov">        102 :    void SelectStream(int index)</span>
 <span class="lineNum">     141 </span>            : /* ------------------------------------------------------------------
 <span class="lineNum">     142 </span>            :  * Use this function to set the current random number generator
 <span class="lineNum">     143 </span>            :  * stream -- that stream from which the next random number will come.
 <span class="lineNum">     144 </span>            :  * ------------------------------------------------------------------
 <span class="lineNum">     145 </span>            :  */
 <span class="lineNum">     146 </span>            : {
-<span class="lineNum">     147 </span><span class="lineCov">          2 :   stream = ((unsigned int) index) % STREAMS;</span>
-<span class="lineNum">     148 </span><span class="lineCov">          2 :   if ((initialized == 0) &amp;&amp; (stream != 0))   /* protect against        */</span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 :     PlantSeeds(DEFAULT);                     /* un-initialized streams */</span>
-<span class="lineNum">     150 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     147 </span><span class="lineCov">        102 :   stream = ((unsigned int) index) % STREAMS;</span>
+<span class="lineNum">     148 </span><span class="lineCov">        102 :   if ((initialized == 0) &amp;&amp; (stream != 0))   /* protect against        */</span>
+<span class="lineNum">     149 </span><span class="lineCov">         51 :     PlantSeeds(DEFAULT);                     /* un-initialized streams */</span>
+<span class="lineNum">     150 </span><span class="lineCov">        102 : }</span>
 <a name="151"><span class="lineNum">     151 </span>            : </a>
 <span class="lineNum">     152 </span>            : 
 <span class="lineNum">     153 </span><span class="lineNoCov">          0 :    void TestRandom(void)</span>
