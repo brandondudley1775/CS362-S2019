@@ -6,14 +6,14 @@
 char inputChar()
 {
 	char *chars = " abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()[]{};':,.<>/?\"\0";
-	int index = rand() % 62;
+	int index = rand() % 63;
     return chars[index];
 }
 
 char *inputString()
 {
-    int string_length = rand() % 5;
-	char *string = malloc (sizeof(char) * 5);
+    int string_length = rand() % 6;
+	char *string = malloc (sizeof(char) * 6);
 	int x;
 	for(x=0; x<string_length; x++){
 		string[x] = inputChar();
