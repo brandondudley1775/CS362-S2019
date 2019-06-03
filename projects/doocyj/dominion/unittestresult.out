@@ -1,0 +1,26 @@
+Capturing coverage data from .
+Found gcov version: 5.4.0
+Scanning . for .gcda files ...
+Found 8 data files in .
+Processing cardtest1.gcda
+Processing cardtest2.gcda
+Processing dominion.gcda
+Processing rngs.gcda
+Processing unittest1.gcda
+Processing unittest2.gcda
+Processing unittest3.gcda
+Processing unittest4.gcda
+Finished .info-file creation
+Reading data file coverage.info
+Found 4 entries.
+Found common filename prefix "/mnt/c/Users/brandon/Documents/GitHub/dudleyb_hw/projects/doocyj"
+Writing .css and .png files.
+Generating output.
+Processing file dominion/cardtest2.c
+Processing file dominion/dominion.c
+Processing file dominion/cardtest1.c
+Processing file dominion/rngs.c
+Writing directory view page.
+Overall coverage rate:
+  lines......: 32.9% (226 of 686 lines)
+  functions..: 45.7% (16 of 35 functions)

@@ -8,7 +8,7 @@
 int smithyCard(int currentPlayer, struct gameState *state, int handPos){
 	//+3 Cards
 	int i;
-	for (i = 0; i < 4; i++){
+	for (i = 0; i < 3; i++){
 		drawCard(currentPlayer, state);
 	}
 			
@@ -28,9 +28,6 @@ int adventurerCard(int drawntreasure, struct gameState *state, int currentPlayer
 		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold){
 			drawntreasure++;
-			temphand[z]=cardDrawn;
-			state->handCount[currentPlayer]--;
-			z++;
 		}
 		else{
 			temphand[z]=cardDrawn;
